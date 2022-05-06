@@ -2,23 +2,20 @@ import { connect } from "react-redux";
 import "./App.css";
 import { useEffect } from "react";
 
-import { onStart, onSuccess } from "./actions";
+import { getUniversities } from "./actions";
+
 import UniversityList from "./components/UniversityList";
 import UniversityForm from "./components/UniversityForm";
-import axios from "axios";
+
 
 
 function App(props) {
-  const { loading, error } = props;
+  const { loading, error, getUniversities } = props;
 
   useEffect(() => {
-    props.onStart();
-    axios
-      .get(`http://universities.hipolabs.com/search?country=United+States`)
-      .then((res) => {
-        props.onSuccess(res.data.data);
-      });
+    getUniversities('Chile')
   }, []);
+
   return (
     <div className="App">
       <h1>Search for Universities by Country</h1>
@@ -38,4 +35,4 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, { onStart, onSuccess })(App);
+export default connect(mapStateToProps, {getUniversities})(App);

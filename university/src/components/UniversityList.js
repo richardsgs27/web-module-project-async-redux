@@ -7,7 +7,7 @@ const UniversityList = props => {
 
     return (<div id="universityList">
         {
-        universities.map(university => {
+        universities?.map(university => {
                 return(
                     <University university={university}/>
                 )
