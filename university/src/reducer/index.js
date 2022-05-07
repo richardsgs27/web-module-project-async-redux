@@ -1,6 +1,6 @@
 import data from "../data/universities";
 
-import { ON_START, ON_SUCCESS } from "../actions";
+import { ON_START, ON_SUCCESS } from "../actions/index";
 
 const initialState = {
   universities: data,
@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
     case ON_START:
       return {
         ...state,
-        loading: true,
+        loading: false,
         error: "",
       };
     case ON_SUCCESS:
